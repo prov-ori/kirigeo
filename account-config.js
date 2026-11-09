@@ -2,5 +2,6 @@
    Если url пустой, кнопки «Аккаунт» скрыты и сайт работает как раньше. */
 window.KG_ACCOUNT = {
   url: 'https://plbuqqekksabveplzjno.supabase.co',
-  anonKey: 'sb_publishable_7BoRIlMyXNWeccLq2zFpiA__uhgUwdB'
+  anonKey: 'sb_publishable_7BoRIlMyXNWeccLq2zFpiA__uhgUwdB',
+  google: false   // поставьте true после включения Google в Supabase (docs/ACCOUNTS.md, п. 4)
 };

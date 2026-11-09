@@ -108,7 +108,7 @@
         var r = await client.auth.signInWithOtp({ email: email.value.trim(), options: { emailRedirectTo: BASE } });
         msg = r.error ? 'Ошибка: ' + r.error.message : 'Ссылка отправлена на ' + email.value + '. Откройте письмо на этом устройстве.'; render();
       }));
-      box.appendChild(btn('Войти через Google', async function () {
+      if (cfg.google) box.appendChild(btn('Войти через Google', async function () {
         var r = await client.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: BASE } });
         if (r.error) { msg = 'Ошибка: ' + r.error.message; render(); }
       }, true));
