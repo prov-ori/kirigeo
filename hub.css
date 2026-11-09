@@ -30,3 +30,5 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--c,var(--lit));outli
 footer{border-top:1px solid var(--line);padding-top:20px;padding-bottom:28px;color:var(--muted);font-size:14px}footer a{color:var(--ink)}
 @media(max-width:720px){.subjects,.cols{grid-template-columns:1fr}.hero{padding-top:28px}.lead{font-size:16px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+nav a.acc{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;color:var(--ink)}
+@media(max-width:560px){nav a:not(.acc){display:none}}

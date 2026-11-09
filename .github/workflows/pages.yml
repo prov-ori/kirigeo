@@ -20,7 +20,7 @@ jobs:
       - name: Собрать сайт (без служебных файлов)
         run: |
           mkdir _site
-          cp -r index.html 404.html hub.css hub.js stats.js logo.svg og-image.png .nojekyll kirjandus geo _site/
+          cp -r index.html 404.html hub.css hub.js stats.js account.js account-config.js sync-merge.js vendor logo.svg og-image.png .nojekyll kirjandus geo _site/
           rm -rf _site/geo/tests _site/geo/scripts _site/geo/*.mjs _site/geo/package.json _site/geo/vercel.json
       - uses: actions/upload-pages-artifact@v3
         with: { path: _site }

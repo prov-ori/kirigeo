@@ -22,6 +22,8 @@ node scripts/gen-stats.mjs
 - `geo/` — бывший репозиторий `prov-ori/geo` (запуск: `cd geo && npm run dev`, тесты: `npm test`). GEO работает прямо из исходников, `npm run build` нужен только для Vercel.
 - `scripts/check.mjs` — проверка локальных ссылок в html.
 
+Аккаунты и синхронизация между устройствами: `docs/ACCOUNTS.md`.
+
 Прогресс каждого предмета хранится отдельно (`kirjandus.v1`, `geo-expedition-v1`); экспорт/импорт JSON — в разделе «Прогресс» предмета.
 
 ## Публикация (GitHub Pages)

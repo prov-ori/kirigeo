@@ -31,7 +31,7 @@
 <a class="skip" href="#main">К содержимому</a>
 <header class="top"><div class="wrap top-in">
   <a class="brand" href="./"><img src="logo.svg" alt="" width="36" height="36"><span>КириГео</span></a>
-  <nav aria-label="Предметы"><a href="kirjandus/">Литература</a><a href="geo/">География</a></nav>
+  <nav aria-label="Предметы"><a href="kirjandus/">Литература</a><a href="geo/">География</a><a href="#" class="acc" data-kg-account hidden>Войти</a></nav>
 </div></header>
 <main id="main" tabindex="-1">
   <section class="hero wrap">
@@ -62,13 +62,16 @@
     <h2>Как это устроено</h2>
     <div class="cols">
       <div><h3>Прогресс и опыт</h3><p>Уроки, квизы и карточки приносят опыт и открывают звания в каждом предмете. Итог по обоим предметам виден выше.</p></div>
-      <div><h3>Резервная копия</h3><p>Прогресс хранится только в этом браузере. Экспорт и импорт JSON — в разделе «Прогресс» каждого предмета.</p></div>
+      <div><h3>Аккаунт и резервная копия</h3><p>Без входа прогресс хранится только в этом браузере. Войдите (кнопка вверху), чтобы он синхронизировался между устройствами; экспорт JSON в разделе «Прогресс» остаётся запасным вариантом.</p></div>
       <div><h3>Офлайн</h3><p>«Летопись» после первого открытия работает без интернета. GEO использует сетевые шрифты, но запасные подставляются сами.</p></div>
     </div>
   </section>
 </main>
 <footer class="wrap">КириГео · учебный ресурс. В экзаменационных вопросах приоритет у материалов вашего преподавателя. <a href="kirjandus/#/about">О «Летописи»</a> · <a href="geo/#about">О GEO</a></footer>
 <script src="stats.js"></script>
+<script src="account-config.js"></script>
+<script src="sync-merge.js"></script>
+<script src="account.js"></script>
 <script src="hub.js"></script>
 </body>
 </html>

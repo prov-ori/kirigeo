@@ -9,6 +9,7 @@
   $('lit-stats').innerHTML = stat(S.lit.lessons, 'урок', 'урока', 'уроков') + stat(S.lit.questions, 'вопрос', 'вопроса', 'вопросов') + stat(S.lit.examItems, 'вопрос теста', 'вопроса теста', 'вопросов теста');
   $('geo-stats').innerHTML = stat(S.geo.lessons, 'урок', 'урока', 'уроков') + stat(S.geo.questions, 'вопрос', 'вопроса', 'вопросов') + stat(S.geo.terms, 'понятие', 'понятия', 'понятий');
 
+  function renderProgress() {
   // Прогресс читаем из тех же ключей localStorage, что и сами приложения (один origin).
   var lit = read('kirjandus.v1'), geo = read('geo-expedition-v1');
   var litDone = lit && lit.done ? Object.keys(lit.done).length : 0;
@@ -19,7 +20,7 @@
     var pct = total ? Math.min(100, Math.round(done / total * 100)) : 0;
     $(prefix + '-bar').style.width = pct + '%';
     $(prefix + '-prog').textContent = done ? 'Пройдено уроков: ' + done + ' из ' + total + ' · ' + xp + ' XP' : 'Вы ещё не начинали — самое время.';
-    if (done) $(prefix + '-go').textContent = 'Продолжить';
+    if (done) $(prefix + "-go").textContent = "Продолжить";
   }
   show('lit', litDone, S.lit.lessons, litXp);
   show('geo', geoDone, S.geo.lessons, geoXp);
@@ -29,4 +30,7 @@
     t.hidden = false;
     t.textContent = 'Всего пройдено ' + done + ' из ' + all + ' уроков · ' + (litXp + geoXp) + ' XP';
   }
+  }
+  renderProgress();
+  window.addEventListener('kg:synced', renderProgress);
 })();
