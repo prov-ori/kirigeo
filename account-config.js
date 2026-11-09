@@ -3,5 +3,5 @@
 window.KG_ACCOUNT = {
   url: 'https://plbuqqekksabveplzjno.supabase.co',
   anonKey: 'sb_publishable_7BoRIlMyXNWeccLq2zFpiA__uhgUwdB',
-  google: false   // поставьте true после включения Google в Supabase (docs/ACCOUNTS.md, п. 4)
+  google: true
 };
