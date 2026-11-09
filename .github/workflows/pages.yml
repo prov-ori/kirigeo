@@ -1,7 +1,7 @@
 name: pages
 on:
   push:
-    branches: [main, claude/awesome-volta-e1i9zh]
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
@@ -17,7 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
-        with: { enablement: true }
       - name: Собрать сайт (без служебных файлов)
         run: |
           mkdir _site
