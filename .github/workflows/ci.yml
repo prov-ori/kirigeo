@@ -1,0 +1,13 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Тесты GEO
+        run: cd geo && node --test tests/*.test.mjs
+      - name: Проверка цифр главной страницы
+        run: node scripts/gen-stats.mjs && git diff --exit-code stats.js

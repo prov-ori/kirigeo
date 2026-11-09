@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>КириГео — литература и география для гимназии</title>
+<meta name="description" content="Интерактивная платформа для гимназии: литература («Летопись») и география («GEO») — уроки, тесты, карточки, атлас и лаборатории. Бесплатно, без регистрации, прогресс хранится в браузере.">
+<link rel="canonical" href="https://prov-ori.github.io/kirigeo/">
+<meta name="theme-color" content="#1b2231">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="КириГео">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://prov-ori.github.io/kirigeo/">
+<meta property="og:title" content="КириГео — литература и география для гимназии">
+<meta property="og:description" content="Два предмета на одной платформе: «Летопись» (литература) и «GEO» (география). Уроки, тесты, карточки, атлас, лаборатории. Бесплатно.">
+<meta property="og:image" content="https://prov-ori.github.io/kirigeo/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="КириГео: литература и география для гимназии">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="КириГео — литература и география для гимназии">
+<meta name="twitter:description" content="Два предмета на одной платформе: «Летопись» и «GEO». Бесплатно, без регистрации.">
+<meta name="twitter:image" content="https://prov-ori.github.io/kirigeo/og-image.png">
+<meta property="vk:image" content="https://prov-ori.github.io/kirigeo/og-image.png">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="hub.css">
+</head>
+<body>
+<a class="skip" href="#main">К содержимому</a>
+<header class="top"><div class="wrap top-in">
+  <a class="brand" href="./"><img src="logo.svg" alt="" width="36" height="36"><span>КириГео</span></a>
+  <nav aria-label="Предметы"><a href="kirjandus/">Литература</a><a href="geo/">География</a></nav>
+</div></header>
+<main id="main" tabindex="-1">
+  <section class="hero wrap">
+    <p class="kicker">Гимназия · экстернат · Эстония</p>
+    <h1>Литература и география — в одном месте</h1>
+    <p class="lead">Читайте конспекты, отвечайте на вопросы, повторяйте карточки, исследуйте атлас. Всё работает в браузере: без регистрации, прогресс остаётся на вашем устройстве.</p>
+    <div class="total" id="total" hidden></div>
+  </section>
+  <section class="subjects wrap" aria-label="Предметы">
+    <article class="subject lit">
+      <div class="s-head"><span class="s-mark" aria-hidden="true">Л</span><div><h2>Летопись</h2><p>Литература · от Гомера до Бродского</p></div></div>
+      <p class="s-text">Пять курсов программы: античность, древнерусская литература, Пушкин, Достоевский, Толстой, Серебряный век, эмиграция, Булгаков. Тесты преподавателя с образцами ответов.</p>
+      <ul class="stats" id="lit-stats"></ul>
+      <div class="bar" role="img" aria-label="Прогресс по литературе"><i id="lit-bar"></i></div>
+      <p class="prog" id="lit-prog"></p>
+      <a class="btn" id="lit-go" href="kirjandus/">Открыть «Летопись»</a>
+    </article>
+    <article class="subject geo">
+      <div class="s-head"><span class="s-mark" aria-hidden="true">G</span><div><h2>GEO</h2><p>География · RU + Eesti mõisted</p></div></div>
+      <p class="s-text">Три курса: «Maa kui süsteem», «Rahvastik ja majandus», «Loodusvarad ja nende kasutamine». Атлас, тренажёр стран и столиц, лаборатории и исследования.</p>
+      <ul class="stats" id="geo-stats"></ul>
+      <div class="bar" role="img" aria-label="Прогресс по географии"><i id="geo-bar"></i></div>
+      <p class="prog" id="geo-prog"></p>
+      <a class="btn" id="geo-go" href="geo/">Открыть GEO</a>
+    </article>
+  </section>
+  <section class="how wrap" aria-label="Как это устроено">
+    <h2>Как это устроено</h2>
+    <div class="cols">
+      <div><h3>Прогресс и опыт</h3><p>Уроки, квизы и карточки приносят опыт и открывают звания в каждом предмете. Итог по обоим предметам виден выше.</p></div>
+      <div><h3>Резервная копия</h3><p>Прогресс хранится только в этом браузере. Экспорт и импорт JSON — в разделе «Прогресс» каждого предмета.</p></div>
+      <div><h3>Офлайн</h3><p>«Летопись» после первого открытия работает без интернета. GEO использует сетевые шрифты, но запасные подставляются сами.</p></div>
+    </div>
+  </section>
+</main>
+<footer class="wrap">КириГео · учебный ресурс. В экзаменационных вопросах приоритет у материалов вашего преподавателя. <a href="kirjandus/#/about">О «Летописи»</a> · <a href="geo/#about">О GEO</a></footer>
+<script src="stats.js"></script>
+<script src="hub.js"></script>
+</body>
+</html>

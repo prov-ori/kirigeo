@@ -1,0 +1,12 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {courses,lessons,terms,projects} from '../content.js';
+import {countries} from '../countries.js';
+import {populationChange,energyMix,cleanProgress,escapeHTML,shuffle} from '../core.js';
+test('Every syllabus module has substantive lessons and questions',()=>{assert.equal(lessons.length,42);for(const c of courses)for(let m=0;m<c.modules.length;m++){const ls=lessons.filter(l=>l.course===c.id&&l.module===m);assert.ok(ls.length);for(const l of ls){assert.ok(l.paragraphs.join('').length>400);assert.equal(l.question.options.length,3);assert.equal(new Set(l.question.options).size,3);assert.ok(l.question.explanation.length>30);assert.equal(l.terms.length,2);}}assert.equal(terms.length,84);assert.equal(projects.length,9);});
+test('No missing coordinates, capitals, lesson links or duplicated IDs',async()=>{assert.equal(new Set(countries.map(c=>c.id)).size,countries.length);for(const c of countries){assert.ok(c.capital&&c.name);assert.ok(c.lon>=-180&&c.lon<=180&&c.lat>=-90&&c.lat<=90);}const world=JSON.parse(await readFile('world.json','utf8'));assert.ok(world.features.length>170);for(const t of terms)assert.ok(lessons.some(l=>l.id===t.lesson));});
+test('Demography conserves all four flows',()=>{assert.deepEqual(populationChange(900,1100,800,300),{natural:-200,migration:500,total:300});assert.equal(populationChange(0,0,0,0).total,0);});
+test('Energy weights normalize and zero mix is safe',()=>{assert.equal(energyMix([100,0],[700,12]),700);assert.equal(energyMix([1,1],[700,12]),356);assert.equal(energyMix([0,0],[700,12]),0);});
+test('Imported progress rejects malformed values and deduplicates',()=>{const p=cleanProgress({done:[1,1,42,43,'2',-1],xp:-9,notes:{p0:'ok',x:'bad',p1:3},labs:['climate','climate','bad'],mistakes:[5,5,100]});assert.deepEqual(p.done,[1,42]);assert.equal(p.xp,0);assert.deepEqual(p.notes,{p0:'ok'});assert.deepEqual(p.labs,['climate']);assert.deepEqual(p.mistakes,[5]);});
+test('User notes are escaped and shuffle preserves items',()=>{assert.equal(escapeHTML('<script>'), '&lt;script&gt;');assert.deepEqual(shuffle([1,2,3]).sort(),[1,2,3]);});
