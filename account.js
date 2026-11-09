@@ -130,7 +130,7 @@
       box.appendChild(btn('Выйти', function () { return client.auth.signOut(); }, true));
       var tot = el('div'); box.appendChild(tot); mfaSection(tot);
     }
-    if (msg) box.appendChild(note(msg, /ошибк|не удалось|неверн|введите/i.test(msg)));
+    if (msg) box.appendChild(note(msg, /ошибк|не удал|неверн|введите/i.test(msg)));
     box.appendChild(btn('Закрыть', close, true));
     dlg.textContent = ''; dlg.appendChild(box);
   }
