@@ -1,6 +1,6 @@
 # Аккаунты и синхронизация прогресса
 
-Вход: ссылка на email или Google. Защита Google Authenticator (TOTP) — по желанию, включается в окне «Аккаунт». Данные: email и учебный прогресс обоих предметов. Пока `account-config.js` пуст, сайт работает как раньше, кнопки входа скрыты.
+Вход: ссылка на email или Google. Двухфакторная защита (Google Authenticator) из интерфейса убрана: для учебного прогресса она избыточна. Если у аккаунта фактор уже есть, вход просит код, а в окне «Аккаунт» его можно отключить. Данные: email и учебный прогресс обоих предметов. Пока `account-config.js` пуст, сайт работает как раньше, кнопки входа скрыты.
 
 ## Настройка (один раз, ~15 минут)
 
@@ -22,8 +22,6 @@ Authentication → Providers → Email включён (по умолчанию).
 2. Credentials → Create credentials → OAuth client ID → Web application. Authorized redirect URI: `https://XXXX.supabase.co/auth/v1/callback` (точный адрес показан в Supabase: Providers → Google).
 3. Client ID и Client secret вставьте в Supabase → Authentication → Providers → Google → Enable.
 
-### 5. Google Authenticator
-Включать в Supabase ничего не нужно, если TOTP MFA не отключён (Authentication → Sign In / Providers → Multi-Factor). Пользователь подключает его сам: «Аккаунт» → «Google Authenticator» → «Подключить». Политика в `schema.sql` делает код обязательным для тех, кто его подключил.
 
 ## Как работает синхронизация
 - Прогресс остаётся в localStorage, как и раньше; аккаунт синхронизирует его с таблицей `progress`.

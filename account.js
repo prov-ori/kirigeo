@@ -114,7 +114,7 @@
       }, true));
       box.appendChild(el('p', {}, [el('small', { text: 'Храним только email и учебный прогресс. ' }), el('a', { href: BASE + 'privacy.html', target: '_blank', rel: 'noopener', text: 'Политика конфиденциальности' })]));
     } else if (status === 'needs2fa') {
-      box.appendChild(el('p', { text: 'Введите 6-значный код из Google Authenticator.' }));
+      box.appendChild(el('p', { text: 'Введите 6-значный код из приложения-аутентификатора.' }));
       var code = el('input', { inputmode: 'numeric', autocomplete: 'one-time-code', maxlength: '6', placeholder: '123456', 'aria-label': 'Код' });
       box.appendChild(code);
       box.appendChild(btn('Подтвердить', async function () {
@@ -135,29 +135,14 @@
     dlg.textContent = ''; dlg.appendChild(box);
   }
 
+  /* Подключение Google Authenticator из интерфейса убрано. Если у аккаунта уже есть подтверждённый фактор,
+     вход по-прежнему просит код, а здесь можно его отключить. */
   async function mfaSection(host) {
     var f = await client.auth.mfa.listFactors(), t = f.data && f.data.totp && f.data.totp[0];
-    host.appendChild(el('h3', { text: 'Google Authenticator' }));
-    if (t) {
-      host.appendChild(el('p', { text: 'Двухфакторная защита включена: при входе нужен код из приложения.' }));
-      host.appendChild(btn('Отключить', async function () { if (!confirm('Отключить Google Authenticator?')) return; var r = await client.auth.mfa.unenroll({ factorId: t.id }); msg = r.error ? 'Ошибка: ' + r.error.message : 'Отключено.'; await refresh(); }, true));
-    } else {
-      host.appendChild(el('p', { text: 'Необязательная защита: при входе потребуется код из приложения.' }));
-      host.appendChild(btn('Подключить', async function () {
-        var e = await client.auth.mfa.enroll({ factorType: 'totp', friendlyName: 'КириГео ' + new Date().toISOString().slice(0, 10) });
-        if (e.error) { msg = 'Ошибка: ' + e.error.message; return render(); }
-        host.textContent = '';
-        host.appendChild(el('p', { text: 'Отсканируйте QR-код в Google Authenticator (или введите ключ вручную), затем введите код.' }));
-        host.appendChild(el('img', { src: e.data.totp.qr_code, alt: 'QR-код для Google Authenticator' }));
-        host.appendChild(el('p', {}, [el('code', { text: e.data.totp.secret })]));
-        var code = el('input', { inputmode: 'numeric', maxlength: '6', placeholder: '123456', 'aria-label': 'Код' });
-        host.appendChild(code);
-        host.appendChild(btn('Подтвердить', async function () {
-          var v = await client.auth.mfa.challengeAndVerify({ factorId: e.data.id, code: code.value.trim() });
-          msg = v.error ? 'Неверный код.' : 'Google Authenticator подключён.'; await refresh();
-        }));
-      }));
-    }
+    if (!t) return;
+    host.appendChild(el('h3', { text: 'Двухфакторная защита' }));
+    host.appendChild(el('p', { text: 'При входе нужен код из приложения-аутентификатора.' }));
+    host.appendChild(btn('Отключить', async function () { if (!confirm('Отключить двухфакторную защиту?')) return; var r = await client.auth.mfa.unenroll({ factorId: t.id }); msg = r.error ? 'Ошибка: ' + r.error.message : 'Отключено.'; await refresh(); }, true));
   }
 
   /* ---------- запуск ---------- */
