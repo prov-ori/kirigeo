@@ -112,7 +112,7 @@
         var r = await client.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: BASE } });
         if (r.error) { msg = 'Ошибка: ' + r.error.message; render(); }
       }, true));
-      box.appendChild(el('p', {}, [el('small', { text: 'Храним только email и ваш учебный прогресс. Отправка ссылки — через сервис Supabase.' })]));
+      box.appendChild(el('p', {}, [el('small', { text: 'Храним только email и учебный прогресс. ' }), el('a', { href: BASE + 'privacy.html', target: '_blank', rel: 'noopener', text: 'Политика конфиденциальности' })]));
     } else if (status === 'needs2fa') {
       box.appendChild(el('p', { text: 'Введите 6-значный код из Google Authenticator.' }));
       var code = el('input', { inputmode: 'numeric', autocomplete: 'one-time-code', maxlength: '6', placeholder: '123456', 'aria-label': 'Код' });
