@@ -10,7 +10,7 @@ window.KG_STATS = {
   "geo": {
     "courses": 3,
     "lessons": 42,
-    "questions": 126,
+    "questions": 294,
     "terms": 84,
     "projects": 9
   }

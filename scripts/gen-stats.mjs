@@ -17,10 +17,11 @@ const lit = {
   examItems: sum(Object.values(P.tests),t=>t.items.length),
 };
 const g = await import(pathToFileURL(path.join(root,'geo','content.js')).href);
+const q = await import(pathToFileURL(path.join(root,'geo','quiz-extra.js')).href);
 const geo = {
   courses: g.courses.length,
   lessons: g.lessons.length,
-  questions: g.lessons.length + sum(g.lessons,l=>l.terms.length), // как в questionBank() geo/app.js
+  questions: g.lessons.length + sum(g.lessons,l=>l.terms.length) + sum(Object.values(q.extraQuiz),a=>a.length), // как в questionBank() geo/app.js
   terms: g.terms.length,
   projects: g.projects.length,
 };
